@@ -5,4 +5,5 @@ export interface VehicleData {
     Manufacturer: string;
     'Manufacturing Date': string;
     Seating: number;
+    key: string
 }

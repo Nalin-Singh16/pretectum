@@ -2,20 +2,19 @@
 import type { NextPage } from 'next';
 import VehicleTable from '../components/VehicleTable';
 import SearchForm from '../components/SearchForm';
-import { VehicleData } from './vehicleData'; // Import the server component
-import { Provider } from 'react-redux';
-import { initializeStore } from '../store';
+import { getVehicleData } from './vehicleData'; // Import the server component
+import StoreProvider from './StoreProvider';
+import { Flex } from 'antd';
 
 const HomePage: NextPage = async () => {
-  const vehicleData = await VehicleData(); // Use the server component 
-  const store = initializeStore();
+  const vehicleData = await getVehicleData(); // Use the server component 
   return (
-    <Provider store={store}>
-      <div>
+    <StoreProvider vehicleData={vehicleData}>
+      <Flex vertical={true} gap='large' className='w-full m-auto'>
         <SearchForm />
-        <VehicleTable data={vehicleData} />
-      </div>
-    </Provider >
+        <VehicleTable />
+      </Flex>
+    </StoreProvider >
   );
 };
 

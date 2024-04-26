@@ -14,7 +14,7 @@ const SearchForm: React.FC = () => {
         dispatch(searchVehicles(e.target.value));
     };
 
-    return <Input placeholder="Search Vehicles" onChange={handleSearchChange} />;
+    return <Input placeholder="Search Vehicles" value={searchTerm} onChange={handleSearchChange} />;
 };
 
 export default SearchForm;
