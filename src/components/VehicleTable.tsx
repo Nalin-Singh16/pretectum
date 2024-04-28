@@ -36,11 +36,11 @@ const VehicleTable = () => {
 
     const columns: ColumnsType<VehicleData> = [
         { title: 'Name', dataIndex: 'Name', key: 'Name' },
-        { title: 'Model', dataIndex: 'Model', key: 'Model', filteredValue: filterInfo.Model || null, filters: modelFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Model.includes(String(value)) },
-        { title: 'Type', dataIndex: 'Type', key: 'Type', filteredValue: filterInfo.Type || null, filters: typeFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Type.includes(String(value)) },
-        { title: 'Manufacturer', dataIndex: 'Manufacturer', key: 'Manufacturer', filteredValue: filterInfo.Manufacturer || null, filters: manufacturerFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Manufacturer.includes(String(value)) },
+        { title: 'Model', dataIndex: 'Model', key: 'Model', filteredValue: filterInfo.Model ? [filterInfo.Model] : null, filters: modelFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Model.includes(String(value)) },
+        { title: 'Type', dataIndex: 'Type', key: 'Type', filteredValue: filterInfo.Type ? [filterInfo.Type] : null, filters: typeFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Type.includes(String(value)) },
+        { title: 'Manufacturer', dataIndex: 'Manufacturer', key: 'Manufacturer', filteredValue: filterInfo.Manufacturer ? [filterInfo.Manufacturer] : null, filters: manufacturerFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Manufacturer.includes(String(value)) },
         { title: 'Manufacturing Date', dataIndex: 'Manufacturing Date', key: 'Manufacturing Date', sorter: true },
-        { title: 'Seating', dataIndex: 'Seating', key: 'Seating', filteredValue: filterInfo.Seating || null, filters: seatingFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Seating === value }
+        { title: 'Seating', dataIndex: 'Seating', key: 'Seating', filteredValue: filterInfo.Seating ? [filterInfo.Seating] : null, filters: seatingFilters, filterSearch: true, onFilter: (value: boolean | Key, record: VehicleData) => record.Seating === value }
     ];
 
     return (
