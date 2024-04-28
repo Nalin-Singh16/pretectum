@@ -7,9 +7,11 @@ export async function getVehicleData() {
     const jsonData = await fs.readFile(filePath, 'utf-8');
     const vehicleData: VehicleData[] = JSON.parse(jsonData);
 
-    for (let i = 0; i < vehicleData.length; i++) {
-        vehicleData[i].key = i.toString()
-    }
+    vehicleData.forEach((vehicle, index) => {
+        vehicle.key = index.toString(); // Set a unique key
+        const date = new Date(vehicle['Manufacturing Date']);
+        vehicle['Manufacturing Date'] = date.toISOString().split('T')[0]; // Format date to YYYY-MM-DD
+    });
 
     return vehicleData;
 }

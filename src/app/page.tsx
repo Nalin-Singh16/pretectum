@@ -5,6 +5,7 @@ import SearchForm from '../components/SearchForm';
 import { getVehicleData } from './vehicleData'; // Import the server component
 import StoreProvider from './StoreProvider';
 import { Flex } from 'antd';
+import ClearFilter from '@/components/ClearFilter';
 
 const HomePage: NextPage = async () => {
   const vehicleData = await getVehicleData(); // Use the server component 
@@ -12,6 +13,7 @@ const HomePage: NextPage = async () => {
     <StoreProvider vehicleData={vehicleData}>
       <Flex vertical={true} gap='large' className='w-full m-auto'>
         <SearchForm />
+        <ClearFilter />
         <VehicleTable />
       </Flex>
     </StoreProvider >
