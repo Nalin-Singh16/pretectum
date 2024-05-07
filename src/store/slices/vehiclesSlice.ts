@@ -28,6 +28,8 @@ const vehiclesSlice = createSlice({
         },
         setFilterInfo(state, action) {
             state.filterInfo = action.payload
+            //update the display data here according to the filter applied
+
         },
         setSorterInfo(state, action) {
             state.sorterInfo = action.payload
@@ -46,7 +48,7 @@ const vehiclesSlice = createSlice({
             );
         },
         clearFilters(state) {
-            console.log("In the reducer")
+            console.log("In the reducer clear filter")
             state.displayData = state.ogData; // Reset displayData to the original dataset
             state.searchTerm = ''; // Clear the search term
             state.filterInfo = {};

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Button, Table } from 'antd';
+import { Button, Pagination, Table } from 'antd';
 import { useAppSelector } from '@/store/hook';
 import { VehicleData } from '@/app/types';
 import { ColumnsType, TableProps } from 'antd/es/table';
@@ -30,8 +30,10 @@ const VehicleTable = () => {
 
     const handleChange: OnChange = (pagination, filters, sorter) => {
         console.log('Various parameters', pagination, filters, sorter);
+        console.log('filteredData', filteredData)
         dispatch(setFilterInfo(filters))
         dispatch(setSorterInfo(sorter))
+        //update pagination object, according to the filters, the pagination.size should change
     };
 
     const columns: ColumnsType<VehicleData> = [
@@ -55,10 +57,9 @@ const VehicleTable = () => {
                 onChange={handleChange}
                 columns={columns}
                 dataSource={filteredData}
+                bordered
                 pagination={{
-                    defaultCurrent: 1,
-                    defaultPageSize: 14,
-                    total: filteredData.length,
+                    defaultPageSize: 13,
                 }}
             />
         </>
